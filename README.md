@@ -60,8 +60,8 @@ Explicação sobre cada item:
 
 - Depois dessas alterações rode comando para executar a sua playbook
 
-	Command: ansible-playbook docker.yml
+	Command: ansible-playbook docker.yml -
 	
-######  aso queira debugar o arquivo pode rodar conforme abaixo ######	
+######  Caso queira debugar o arquivo pode rodar conforme abaixo ######	
 
 	Command: ansible-playbook docker.yml -vvv
