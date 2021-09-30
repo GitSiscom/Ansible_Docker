@@ -41,9 +41,13 @@ Explicação sobre cada item:
 
 - Copie o link do repositório no seu Git Hub
 
+![Git](https://user-images.githubusercontent.com/90550531/135503920-dbb3868f-411c-41de-8a07-6ea7d65d43f4.png)
+
 2º Passo
 
 - Dentro do servidor onde está instalado o Ansible, rode o comando: git clone {LINK DO REPOSITÓRIO COPIADO}
+
+![clone](https://user-images.githubusercontent.com/90550531/135504035-82c0afb7-85b5-4193-b46f-5a018becac57.png)
 
 3º Passo
 
