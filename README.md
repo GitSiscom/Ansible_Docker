@@ -32,7 +32,7 @@ Explicação sobre cada item:
 	
 - roles: 
 
-  Logo abaixo desse campo seguido - , informe o nome das regras que será acionada. 
+  Logo abaixo desse campo seguido - informe o nome das regras que será acionada. 
   
 # Etapa de instalação  
 ---  
