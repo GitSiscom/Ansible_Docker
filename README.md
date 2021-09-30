@@ -1,4 +1,3 @@
-
 # Ansible_Docker
 Script de automação no Ansible
 
@@ -63,8 +62,10 @@ Explicação sobre cada item:
 
 	 Command: ansible-playbook docker.yml 
 	
+![ansible-playbook](https://user-images.githubusercontent.com/90550531/135503485-ef4e3111-fcc8-434a-bf79-5945027ad803.png)
+
 ######  Caso queira debugar o arquivo pode rodar conforme abaixo ######	
 
 	Command: ansible-playbook docker.yml -vvv
 	
-![ansible-playbook](https://user-images.githubusercontent.com/90550531/135503485-ef4e3111-fcc8-434a-bf79-5945027ad803.png)
+![playbook](https://user-images.githubusercontent.com/90550531/135503608-1191100b-db7c-4dc7-acd3-b41e0de75a2c.png)
