@@ -1,0 +1,80 @@
+---
+// Instalação de ferramentas necessárias para o ambiente.
+    - name: 'Install packages'
+      dnf:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - net-tools
+        - vim
+        - nano
+        - epel-release
+        - wget
+        - git
+        - curl
+        - tcpdump
+        - telnet
+        - python3
+        - traceroute
+        - nodejs
+        - npm
+// Alterando o status do selinux para disabled e reiniciando o servidor para aplicar as alterações.
+    - name: 'Disabled Selinux'
+      selinux: 
+        state: disabled
+    - name: Reboot
+      reboot:
+        reboot_timeout: 300
+// Alterar o timezone para America/Sao_Paulo e Instalar e sicronizar o horário do servidor.   
+    - name: 'Set timezone for America/Sao_Paulo'
+      timezone:
+        name: America/Sao_Paulo
+    - name: 'Install package chrony'
+      dnf:
+        name: chrony
+        state: present
+    - name: 'Enable and start service chrony'
+      systemd:
+        name: chronyd
+        state: started
+        enabled: yes                           
+    - name: 'Restart service chrony'
+      systemd:
+        name: chronyd
+        state: restarted
+        daemon_reload: yes    
+    - name: 'Add doors NTP in firewall'
+      firewalld:
+        service: ntp
+        permanent: yes
+        state: enabled
+    - name: 'Reload in firewalld'
+      systemd:
+        name: firewalld
+        state: reloaded
+        enabled: yes
+ // Iniciando a instalação da ferramenta Docker e Docker-Compose      
+    - name: 'Add repository Docker'
+      shell: dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+      args:
+        warn: no
+    - name: 'Install container ID'
+      shell: dnf install -y https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
+      args:
+       warn: no
+    - name: 'Install o Docker'
+      shell: dnf install -y docker-ce
+      args:
+        warn: no  
+    - name: 'Start Docker'
+      shell: systemctl enable --now docker
+      args:
+        warn: no
+    - name: 'Docker Compose'
+      shell: sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+      args:
+        warn: no     
+    - name: 'Chmod Docker Compose'
+      shell:  sudo chmod +x /usr/local/bin/docker-compose
+      args:
+        warn: no     
